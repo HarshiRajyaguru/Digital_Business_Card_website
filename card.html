@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Card - Digital Business Card</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Screen View -->
+    <div class="screen-view">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-gradient fixed-top no-print">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="fas fa-id-card me-2"></i>Digital Business Card
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i>Home</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="about.html"><i class="fas fa-circle-info me-1"></i>About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fas fa-envelope me-1"></i>Contact</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="pagesMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-folder me-1"></i>Pages
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="pagesMenu">
+                                <li><a class="dropdown-item" href="gallery.html"><i class="fas fa-images me-2"></i>Gallery</a></li>
+                                <li><a class="dropdown-item" href="testimonials.html"><i class="fas fa-quote-left me-2"></i>Testimonials</a></li>
+                                <li><a class="dropdown-item" href="pricing.html"><i class="fas fa-tags me-2"></i>Pricing</a></li>
+                                <li><a class="dropdown-item" href="faq.html"><i class="fas fa-question-circle me-2"></i>FAQ</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="adminMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-cog me-1"></i>Admin
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminMenu">
+                                <li><a class="dropdown-item" href="admin-dashboard.html"><i class="fas fa-gauge me-2"></i>Dashboard</a></li>
+                                <li><a class="dropdown-item" href="admin.html"><i class="fas fa-user-pen me-2"></i>Profile Editor</a></li>
+                                <li><a class="dropdown-item" href="admin-settings.html"><i class="fas fa-sliders me-2"></i>Settings</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html"><i class="fas fa-arrow-left me-1"></i>Back to Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-light btn-sm ms-2 pulse-btn" onclick="window.print()">
+                                <i class="fas fa-print me-1"></i>Print Card
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-outline-light btn-sm ms-2" id="darkModeToggle">
+                                <i class="fas fa-moon"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Card View Section -->
+        <div class="container my-5 py-5" style="margin-top: 100px !important;">
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bold text-white mb-3">Your Business Card</h1>
+                <p class="lead text-white-50">Professional digital business card ready to share</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <!-- Digital View Card -->
+                    <div class="business-card-container">
+                        <div class="business-card shadow-lg">
+                            <!-- Front Side -->
+                            <div class="card-front">
+                                <div class="card-header-section">
+                                    <div class="profile-section">
+                                        <div class="profile-image-wrapper">
+                                            <img id="profileImage" src="" alt="Profile" class="profile-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                                            <div class="profile-placeholder">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                            <label id="inlineImageUpload" class="upload-overlay no-print" title="Upload image">
+                                                <i class="fas fa-camera"></i>
+                                                <input type="file" accept="image/*" onchange="handleImageUpload(event)">
+                                            </label>
+                                        </div>
+                                        <div class="profile-info">
+                                            <h1 class="name">Your Name</h1>
+                                            <p class="title">Your Job Title</p>
+                                            <p class="company"><i class="fas fa-building me-2"></i>Company Name</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-body-section">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <div class="info-card">
+                                                <h3 class="section-title"><i class="fas fa-address-card me-2"></i>Contact</h3>
+                                                <div class="contact-list">
+                                                    <a href="mailto:your.email@example.com" class="contact-item">
+                                                        <i class="fas fa-envelope"></i>
+                                                        <span>your.email@example.com</span>
+                                                    </a>
+                                                    <a href="tel:+1234567890" class="contact-item">
+                                                        <i class="fas fa-phone"></i>
+                                                        <span>+1 (234) 567-890</span>
+                                                    </a>
+                                                    <a href="https://yourwebsite.com" target="_blank" class="contact-item">
+                                                        <i class="fas fa-globe"></i>
+                                                        <span>yourwebsite.com</span>
+                                                    </a>
+                                                    <div class="contact-item">
+                                                        <i class="fas fa-map-marker-alt"></i>
+                                                        <span>City, Country</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="info-card">
+                                                <h3 class="section-title"><i class="fas fa-user-circle me-2"></i>About</h3>
+                                                <p class="about-text">Add a brief description about yourself, your expertise, and what you do.</p>
+                                                
+                                                <div class="social-links mt-3">
+                                                    <a href="https://linkedin.com/in/yourprofile" target="_blank" class="social-btn linkedin" title="LinkedIn">
+                                                        <i class="fab fa-linkedin-in"></i>
+                                                    </a>
+                                                    <a href="https://github.com/yourprofile" target="_blank" class="social-btn github" title="GitHub">
+                                                        <i class="fab fa-github"></i>
+                                                    </a>
+                                                    <a href="https://twitter.com/yourprofile" target="_blank" class="social-btn twitter" title="Twitter">
+                                                        <i class="fab fa-twitter"></i>
+                                                    </a>
+                                                    <a href="https://instagram.com/yourprofile" target="_blank" class="social-btn instagram" title="Instagram">
+                                                        <i class="fab fa-instagram"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="actions-section mt-4 no-print">
+                                        <button class="btn btn-primary btn-lg" onclick="downloadVCard()">
+                                            <i class="fas fa-download me-2"></i>Save Contact
+                                        </button>
+                                        <button class="btn btn-success btn-lg" onclick="shareCard()">
+                                            <i class="fas fa-share-alt me-2"></i>Share Card
+                                        </button>
+                                        <button class="btn btn-outline-secondary btn-lg" onclick="window.print()">
+                                            <i class="fas fa-print me-2"></i>Print Card
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image Upload Section (Admin Only) -->
+                    <div class="card mt-4 no-print" id="imageUploadSection" style="display: none;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title"><i class="fas fa-camera me-2"></i>Update Profile Image</h5>
+                            <p class="text-muted">Upload a professional photo (recommended: 400x400px)</p>
+                            <input type="file" id="imageUpload" accept="image/*" class="form-control mb-3" onchange="handleImageUpload(event)">
+                            <small class="text-muted">Supported formats: JPG, PNG, GIF (max 5MB)</small>
+                        </div>
+                    </div>
+
+                    <!-- Back to Home Button -->
+                    <div class="text-center mt-4 no-print">
+                        <a href="index.html" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-arrow-left me-2"></i>Back to Home
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Print View (Standard Business Card Size: 3.5" x 2") -->
+    <div class="print-view">
+        <div class="print-card">
+            <div class="print-front">
+                <div class="print-header">
+                    <img id="printProfileImage" src="" alt="" class="print-profile-img" onerror="this.style.display='none'">
+                    <div class="print-info">
+                        <h1 class="print-name">Your Name</h1>
+                        <p class="print-title">Your Job Title</p>
+                        <p class="print-company">Company Name</p>
+                    </div>
+                </div>
+                <div class="print-contacts">
+                    <div class="print-contact-item">
+                        <i class="fas fa-envelope"></i> <span class="print-email">your.email@example.com</span>
+                    </div>
+                    <div class="print-contact-item">
+                        <i class="fas fa-phone"></i> <span class="print-phone">+1 (234) 567-890</span>
+                    </div>
+                    <div class="print-contact-item">
+                        <i class="fas fa-globe"></i> <span class="print-website">yourwebsite.com</span>
+                    </div>
+                    <div class="print-contact-item">
+                        <i class="fas fa-map-marker-alt"></i> <span class="print-location">City, Country</span>
+                    </div>
+                </div>
+                <div class="print-social">
+                    <span class="print-social-item" id="printLinkedIn"></span>
+                    <span class="print-social-item" id="printGitHub"></span>
+                    <span class="print-social-item" id="printTwitter"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="theme.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

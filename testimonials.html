@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials - Digital Business Card</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .testimonial-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            height: 100%;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .testimonial-card:hover::before {
+            left: 100%;
+        }
+
+        .testimonial-card:hover {
+            background: white;
+            border-color: var(--primary-color);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(6, 182, 212, 0.25),
+                        0 0 40px rgba(6, 182, 212, 0.15);
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0.3;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #495057;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .client-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .client-details h5 {
+            margin: 0;
+            font-weight: 700;
+            color: #212529;
+        }
+
+        .client-details p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .rating {
+            color: #ffc107;
+            margin-top: 0.5rem;
+        }
+
+        body.dark-mode .testimonial-card {
+            background: linear-gradient(135deg, #0f172a 0%, #111827 100%);
+            color: #e5e7eb;
+        }
+
+        body.dark-mode .testimonial-card:hover {
+            background: linear-gradient(135deg, #111827 0%, #1e293b 100%);
+        }
+
+        body.dark-mode .testimonial-text {
+            color: #9ca3af;
+        }
+
+        body.dark-mode .client-details h5 {
+            color: #e5e7eb;
+        }
+
+        body.dark-mode .client-details p {
+            color: #94a3b8;
+        }
+
+        .stats-section {
+            background: var(--gradient);
+            color: white;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-gradient fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-id-card me-2"></i>Digital Business Card
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i>Home</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html"><i class="fas fa-circle-info me-1"></i>About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fas fa-envelope me-1"></i>Contact</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="pagesMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-folder me-1"></i>Pages
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="pagesMenu">
+                            <li><a class="dropdown-item" href="gallery.html"><i class="fas fa-images me-2"></i>Gallery</a></li>
+                            <li><a class="dropdown-item active" href="testimonials.html"><i class="fas fa-quote-left me-2"></i>Testimonials</a></li>
+                            <li><a class="dropdown-item" href="pricing.html"><i class="fas fa-tags me-2"></i>Pricing</a></li>
+                            <li><a class="dropdown-item" href="faq.html"><i class="fas fa-question-circle me-2"></i>FAQ</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="adminMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-cog me-1"></i>Admin
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminMenu">
+                            <li><a class="dropdown-item" href="admin-dashboard.html"><i class="fas fa-gauge me-2"></i>Dashboard</a></li>
+                            <li><a class="dropdown-item" href="admin.html"><i class="fas fa-user-pen me-2"></i>Profile Editor</a></li>
+                            <li><a class="dropdown-item" href="admin-settings.html"><i class="fas fa-sliders me-2"></i>Settings</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-light btn-sm ms-2" id="darkModeToggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-5 mt-5 text-white" style="background: var(--gradient-alt);">
+        <div class="container py-5">
+            <div class="text-center">
+                <h1 class="display-4 fw-bold mb-3">Client Testimonials</h1>
+                <p class="lead mb-4">What our clients say about working with us</p>
+                <div class="d-flex gap-2 justify-content-center flex-wrap">
+                    <span class="badge bg-light text-dark fs-6 px-4 py-2">
+                        <i class="fas fa-star text-warning me-1"></i>5.0 Average Rating
+                    </span>
+                    <span class="badge bg-light text-dark fs-6 px-4 py-2">
+                        <i class="fas fa-users me-1"></i>100+ Happy Clients
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container my-5 py-5">
+        <!-- Featured Testimonials -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-6">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <p class="testimonial-text">
+                        "Working with this team has been an absolute pleasure! The digital business card exceeded all my expectations. It's professional, modern, and incredibly easy to share. My networking has improved significantly!"
+                    </p>
+                    <div class="client-info">
+                        <div class="client-avatar">JS</div>
+                        <div class="client-details">
+                            <h5>John Smith</h5>
+                            <p>CEO, Tech Innovations Inc.</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <p class="testimonial-text">
+                        "The customization options are fantastic! I was able to match my brand colors perfectly. The dark mode feature is a game-changer. Highly recommend to anyone looking for a professional online presence."
+                    </p>
+                    <div class="client-info">
+                        <div class="client-avatar">SJ</div>
+                        <div class="client-details">
+                            <h5>Sarah Johnson</h5>
+                            <p>Founder, Creative Studios</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Happy Clients</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number">5.0</div>
+                        <div class="stat-label">Average Rating</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Satisfaction Rate</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Support Available</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- More Testimonials -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <p class="testimonial-text">
+                        "Exceptional service and quality. The card looks amazing on both desktop and mobile!"
+                    </p>
+                    <div class="client-info">
+                        <div class="client-avatar">MC</div>
+                        <div class="client-details">
+                            <h5>Michael Chen</h5>
+                            <p>Marketing Director</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <p class="testimonial-text">
+                        "Love the print feature! I can share my card both digitally and physically. Perfect solution!"
+                    </p>
+                    <div class="client-info">
+                        <div class="client-avatar">EP</div>
+                        <div class="client-details">
+                            <h5>Emily Parker</h5>
+                            <p>Business Consultant</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <p class="testimonial-text">
+                        "The admin panel makes updates so easy. I can change my info anytime without technical skills."
+                    </p>
+                    <div class="client-info">
+                        <div class="client-avatar">DW</div>
+                        <div class="client-details">
+                            <h5>David Williams</h5>
+                            <p>Freelance Designer</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <p class="testimonial-text">
+                        "Fast loading, beautiful design, and incredibly functional. This is the future of business cards!"
+                    </p>
+                    <div class="client-info">
+                        <div class="client-avatar">LB</div>
+                        <div class="client-details">
+                            <h5>Lisa Brown</h5>
+                            <p>Real Estate Agent</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <p class="testimonial-text">
+                        "Great value for money! The features you get are incredible. Highly recommend to all professionals."
+                    </p>
+                    <div class="client-info">
+                        <div class="client-avatar">RG</div>
+                        <div class="client-details">
+                            <h5>Robert Garcia</h5>
+                            <p>Financial Advisor</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <p class="testimonial-text">
+                        "The social media integration is seamless. All my profiles are just one click away. Brilliant!"
+                    </p>
+                    <div class="client-info">
+                        <div class="client-avatar">AK</div>
+                        <div class="client-details">
+                            <h5>Amanda Kim</h5>
+                            <p>Social Media Manager</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="text-center mt-5">
+            <div class="info-card p-5">
+                <h3 class="mb-3"><i class="fas fa-rocket me-2"></i>Ready to Get Your Own?</h3>
+                <p class="text-muted mb-4">Join hundreds of satisfied professionals using our digital business card</p>
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <a href="card.html" class="btn btn-primary btn-lg">
+                        <i class="fas fa-eye me-2"></i>View Demo Card
+                    </a>
+                    <a href="admin-dashboard.html" class="btn btn-outline-primary btn-lg">
+                        <i class="fas fa-gauge me-2"></i>Go to Dashboard
+                    </a>
+                    <a href="index.html" class="btn btn-outline-secondary btn-lg">
+                        <i class="fas fa-home me-2"></i>Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="theme.js"></script>
+</body>
+</html>

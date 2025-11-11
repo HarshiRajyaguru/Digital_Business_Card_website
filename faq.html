@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Digital Business Card</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .faq-category {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .faq-category:hover {
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.15);
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .accordion-button {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: var(--primary-color);
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .search-box input {
+            border-radius: 50px;
+            padding: 1rem 1.5rem;
+            border: 3px solid var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .search-box input:focus {
+            box-shadow: 0 0 0 0.25rem rgba(6, 182, 212, 0.25);
+        }
+
+        body.dark-mode .faq-category {
+            background: linear-gradient(135deg, #0f172a 0%, #111827 100%);
+        }
+
+        body.dark-mode .accordion-item {
+            background-color: #1e293b;
+            border-color: #334155;
+        }
+
+        body.dark-mode .accordion-button {
+            background-color: #1e293b;
+            color: #e5e7eb;
+        }
+
+        body.dark-mode .accordion-button:not(.collapsed) {
+            background: var(--gradient);
+            color: white;
+        }
+
+        body.dark-mode .accordion-body {
+            background-color: #0f172a;
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-gradient fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-id-card me-2"></i>Digital Business Card
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i>Home</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html"><i class="fas fa-circle-info me-1"></i>About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fas fa-envelope me-1"></i>Contact</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="pagesMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-folder me-1"></i>Pages
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="pagesMenu">
+                            <li><a class="dropdown-item" href="gallery.html"><i class="fas fa-images me-2"></i>Gallery</a></li>
+                            <li><a class="dropdown-item" href="testimonials.html"><i class="fas fa-quote-left me-2"></i>Testimonials</a></li>
+                            <li><a class="dropdown-item" href="pricing.html"><i class="fas fa-tags me-2"></i>Pricing</a></li>
+                            <li><a class="dropdown-item active" href="faq.html"><i class="fas fa-question-circle me-2"></i>FAQ</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="adminMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-cog me-1"></i>Admin
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminMenu">
+                            <li><a class="dropdown-item" href="admin-dashboard.html"><i class="fas fa-gauge me-2"></i>Dashboard</a></li>
+                            <li><a class="dropdown-item" href="admin.html"><i class="fas fa-user-pen me-2"></i>Profile Editor</a></li>
+                            <li><a class="dropdown-item" href="admin-settings.html"><i class="fas fa-sliders me-2"></i>Settings</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-light btn-sm ms-2" id="darkModeToggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-5 mt-5 text-white" style="background: var(--gradient-alt);">
+        <div class="container py-5">
+            <div class="text-center">
+                <h1 class="display-4 fw-bold mb-3">Frequently Asked Questions</h1>
+                <p class="lead mb-4">Find answers to common questions about our digital business card</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container my-5 py-5">
+        <!-- Search Box -->
+        <div class="search-box">
+            <input type="text" class="form-control" placeholder="Search for answers..." id="searchFAQ">
+        </div>
+
+        <!-- General Questions -->
+        <div class="faq-category">
+            <div class="category-title">
+                <i class="fas fa-circle-question"></i> General Questions
+            </div>
+            <div class="accordion" id="generalFAQ">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#general1">
+                            What is a digital business card?
+                        </button>
+                    </h2>
+                    <div id="general1" class="accordion-collapse collapse show" data-bs-parent="#generalFAQ">
+                        <div class="accordion-body">
+                            A digital business card is an electronic version of a traditional business card that can be easily shared online, via QR code, or through various digital platforms. It includes your contact information, social media links, and can be customized to match your brand.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#general2">
+                            How do I share my digital business card?
+                        </button>
+                    </h2>
+                    <div id="general2" class="accordion-collapse collapse" data-bs-parent="#generalFAQ">
+                        <div class="accordion-body">
+                            You can share your card via direct link, QR code, email, social media, text message, or any messaging app. Recipients don't need an account to view your card.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#general3">
+                            Can I have multiple business cards?
+                        </button>
+                    </h2>
+                    <div id="general3" class="accordion-collapse collapse" data-bs-parent="#generalFAQ">
+                        <div class="accordion-body">
+                            Yes! Depending on your plan, you can create multiple cards for different roles, businesses, or contexts.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features & Customization -->
+        <div class="faq-category">
+            <div class="category-title">
+                <i class="fas fa-wand-magic-sparkles"></i> Features & Customization
+            </div>
+            <div class="accordion" id="featuresFAQ">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#features1">
+                            Can I customize the design of my card?
+                        </button>
+                    </h2>
+                    <div id="features1" class="accordion-collapse collapse" data-bs-parent="#featuresFAQ">
+                        <div class="accordion-body">
+                            Absolutely! You can customize colors, themes, fonts, add your logo, profile picture, and choose from multiple pre-designed templates. Pro and Enterprise plans offer even more customization options.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#features2">
+                            Does it support dark mode?
+                        </button>
+                    </h2>
+                    <div id="features2" class="accordion-collapse collapse" data-bs-parent="#featuresFAQ">
+                        <div class="accordion-body">
+                            Yes! All cards automatically support dark mode, which can be toggled by viewers for comfortable viewing in any lighting condition.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#features3">
+                            Can I add a profile photo?
+                        </button>
+                    </h2>
+                    <div id="features3" class="accordion-collapse collapse" data-bs-parent="#featuresFAQ">
+                        <div class="accordion-body">
+                            Yes, you can easily upload and update your profile photo through the admin panel. Recommended size is 400x400 pixels.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Questions -->
+        <div class="faq-category">
+            <div class="category-title">
+                <i class="fas fa-gears"></i> Technical Questions
+            </div>
+            <div class="accordion" id="technicalFAQ">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tech1">
+                            Is my card mobile-friendly?
+                        </button>
+                    </h2>
+                    <div id="tech1" class="accordion-collapse collapse" data-bs-parent="#technicalFAQ">
+                        <div class="accordion-body">
+                            Yes! All cards are fully responsive and optimized for mobile, tablet, and desktop devices. They look great on any screen size.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tech2">
+                            Can I download my contacts as vCard?
+                        </button>
+                    </h2>
+                    <div id="tech2" class="accordion-collapse collapse" data-bs-parent="#technicalFAQ">
+                        <div class="accordion-body">
+                            Yes, viewers can download your information as a vCard (.vcf) file to easily save to their phone contacts.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tech3">
+                            Can I print my digital card?
+                        </button>
+                    </h2>
+                    <div id="tech3" class="accordion-collapse collapse" data-bs-parent="#technicalFAQ">
+                        <div class="accordion-body">
+                            Yes! There's a print-optimized view that formats your card to standard business card size (3.5" x 2") for physical printing.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Billing & Plans -->
+        <div class="faq-category">
+            <div class="category-title">
+                <i class="fas fa-credit-card"></i> Billing & Plans
+            </div>
+            <div class="accordion" id="billingFAQ">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#billing1">
+                            What payment methods do you accept?
+                        </button>
+                    </h2>
+                    <div id="billing1" class="accordion-collapse collapse" data-bs-parent="#billingFAQ">
+                        <div class="accordion-body">
+                            We accept all major credit cards (Visa, Mastercard, American Express), PayPal, and wire transfers for Enterprise plans.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#billing2">
+                            Can I cancel anytime?
+                        </button>
+                    </h2>
+                    <div id="billing2" class="accordion-collapse collapse" data-bs-parent="#billingFAQ">
+                        <div class="accordion-body">
+                            Yes, you can cancel your subscription at any time. Your card will remain active until the end of your billing period.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#billing3">
+                            Do you offer refunds?
+                        </button>
+                    </h2>
+                    <div id="billing3" class="accordion-collapse collapse" data-bs-parent="#billingFAQ">
+                        <div class="accordion-body">
+                            Yes, we offer a 30-day money-back guarantee for all new subscriptions. Contact support for refund requests.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Support -->
+        <div class="faq-category">
+            <div class="category-title">
+                <i class="fas fa-life-ring"></i> Support
+            </div>
+            <div class="accordion" id="supportFAQ">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#support1">
+                            How do I get support?
+                        </button>
+                    </h2>
+                    <div id="support1" class="accordion-collapse collapse" data-bs-parent="#supportFAQ">
+                        <div class="accordion-body">
+                            You can reach our support team via email, live chat (Pro and Enterprise plans), or through the contact form. Response times vary by plan.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#support2">
+                            Is there a tutorial or guide?
+                        </button>
+                    </h2>
+                    <div id="support2" class="accordion-collapse collapse" data-bs-parent="#supportFAQ">
+                        <div class="accordion-body">
+                            Yes! We have comprehensive video tutorials, documentation, and step-by-step guides available in our knowledge base.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Still Have Questions -->
+        <div class="text-center mt-5 pt-5">
+            <div class="info-card p-5">
+                <h3 class="mb-3"><i class="fas fa-comments me-2"></i>Still Have Questions?</h3>
+                <p class="text-muted mb-4">Our support team is here to help!</p>
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <a href="contact.html" class="btn btn-primary btn-lg">
+                        <i class="fas fa-envelope me-2"></i>Contact Support
+                    </a>
+                    <a href="pricing.html" class="btn btn-outline-primary btn-lg">
+                        <i class="fas fa-tags me-2"></i>View Pricing
+                    </a>
+                    <a href="index.html" class="btn btn-outline-secondary btn-lg">
+                        <i class="fas fa-home me-2"></i>Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="theme.js"></script>
+    <script>
+        // Simple FAQ search functionality
+        document.getElementById('searchFAQ').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+            
+            accordionButtons.forEach(button => {
+                const text = button.textContent.toLowerCase();
+                const accordionItem = button.closest('.accordion-item');
+                
+                if (text.includes(searchTerm) || searchTerm === '') {
+                    accordionItem.style.display = 'block';
+                } else {
+                    accordionItem.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
