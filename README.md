@@ -99,11 +99,6 @@ Dark / Light mode
 
 Edit any of the HTML pages (About, Contact, Gallery, etc.) to add your own personal or business information.
 
-🖼️ Images
-
-Replace images with your own:
-
-<img src="your-image-path.jpg">
 
 📊 Analytics Page
 
